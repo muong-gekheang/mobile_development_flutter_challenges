@@ -1,7 +1,7 @@
-import 'package:challenge/w7_small_homework/data/repositories/user_history/user_history_repository.dart';
+import 'package:challenge/w7_small_homework/data/repositories/user/user.dart';
 import 'package:challenge/w7_small_homework/model/songs/song.dart';
 
-class UserHistoryRepositoryMock implements UserHistoryRepository {
+class UserRepositoryMock implements User {
   final Map<String, Song> _mockSongsById = {
     '101': Song(
       id: '101',

@@ -7,13 +7,17 @@ class LibraryViewModel extends ChangeNotifier {
   SongRepository songRepository;
   PlayerState playerState;
 
-  LibraryViewModel({
-    required this.songRepository,
-    required this.playerState,
-  }) {
+  LibraryViewModel({required this.songRepository, required this.playerState}) {
     init();
     playerState.addListener(onPlayerChanged);
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    playerState.removeListener(onPlayerChanged);
+  }
+
   List<Song> _songs = [];
   List<Song> get songs => _songs;
   Song? get currentSong => playerState.currentSong;

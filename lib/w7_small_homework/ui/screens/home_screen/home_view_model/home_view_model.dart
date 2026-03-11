@@ -1,15 +1,21 @@
-import 'package:challenge/w7_small_homework/data/repositories/songs/song_repository.dart';
-import 'package:challenge/w7_small_homework/data/repositories/user_history/user_history_repository.dart';
-import 'package:challenge/w7_small_homework/ui/states/player_state.dart';
+import 'dart:ui';
 
-class HomeViewModel {
-  final UserHistoryRepository userHistoryRepository;
+import 'package:challenge/w7_small_homework/data/repositories/songs/song_repository.dart';
+import 'package:challenge/w7_small_homework/data/repositories/user/user.dart';
+import 'package:challenge/w7_small_homework/ui/states/player_state.dart';
+import 'package:flutter/widgets.dart';
+
+class HomeViewModel extends ChangeNotifier{
+  final User userRepository;
   final SongRepository songRepository;
   final PlayerState playerState;
 
   HomeViewModel({
-    required this.userHistoryRepository,
+    required this.userRepository,
     required this.songRepository,
     required this.playerState,
   });
+
+
+
 }
