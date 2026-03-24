@@ -63,6 +63,10 @@ class _MyAppState extends State<MyApp> {
               icon: Icon(Icons.heart_broken),
               label: 'Favorites',
             ),
+             BottomNavigationBarItem(
+              icon: Icon(Icons.people),
+              label: 'Artist',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',

@@ -1,3 +1,4 @@
+import 'package:challenge/w9_firebase/ui/utils/time_converter.dart';
 import 'package:flutter/material.dart';
 
 import '../../../model/songs/song.dart';
@@ -21,11 +22,16 @@ class SongTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15)
+          borderRadius: BorderRadius.circular(15),
         ),
         child: ListTile(
           onTap: onTap,
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(song.imageUrl),
+            radius: 15,
+          ),
           title: Text(song.title),
+          subtitle: Text('${TimeConverter.msConverter(song.duration)} mins'),
           trailing: Text(
             isPlaying ? "Playing" : "",
             style: TextStyle(color: Colors.amber),
