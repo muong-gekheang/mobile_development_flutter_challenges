@@ -1,3 +1,4 @@
+import 'package:challenge/spotify_player_state/model/artists/artist.dart';
 import 'package:challenge/w9_firebase/ui/utils/time_converter.dart';
 import 'package:flutter/material.dart';
 
@@ -9,11 +10,13 @@ class SongTile extends StatelessWidget {
     required this.song,
     required this.isPlaying,
     required this.onTap,
+    required this.artist,
   });
 
   final Song song;
   final bool isPlaying;
   final VoidCallback onTap;
+  final Artist artist;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,13 @@ class SongTile extends StatelessWidget {
             radius: 15,
           ),
           title: Text(song.title),
-          subtitle: Text('${TimeConverter.msConverter(song.duration)} mins'),
+          subtitle: Row(
+            children: [
+              Text('${TimeConverter.msConverter(song.duration)} mins'),
+              SizedBox(width: 12),
+              Expanded(child: Text('${artist.name} - ${artist.genre}')),
+            ],
+          ),
           trailing: Text(
             isPlaying ? "Playing" : "",
             style: TextStyle(color: Colors.amber),
