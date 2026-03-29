@@ -39,11 +39,22 @@ class SongTile extends StatelessWidget {
               Text('${TimeConverter.msConverter(song.duration)} mins'),
               SizedBox(width: 12),
               Expanded(child: Text('${artist.name} - ${artist.genre}')),
+              
             ],
           ),
-          trailing: Text(
-            isPlaying ? "Playing" : "",
-            style: TextStyle(color: Colors.amber),
+          trailing: Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  print('The favorite icon is pressed');
+                },
+                icon: Icon(Icons.favorite),
+              ),
+              Text(
+                isPlaying ? "Playing" : "",
+                style: TextStyle(color: Colors.amber),
+              ),
+            ],
           ),
         ),
       ),
