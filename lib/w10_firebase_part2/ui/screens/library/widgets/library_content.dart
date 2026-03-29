@@ -32,6 +32,8 @@ class LibraryContent extends StatelessWidget {
       case AsyncValueState.success:
         List<LibraryItemData> data = asyncValue.data!;
         content = ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           itemCount: data.length,
           itemBuilder: (context, index) => LibraryItemTile(
             data: data[index],
@@ -48,15 +50,21 @@ class LibraryContent extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 16),
-          Text("Library", style: AppTextStyles.heading),
-          SizedBox(height: 50),
-
-          Expanded(child: content),
-        ],
+      child: RefreshIndicator(
+        onRefresh: mv.refresh,
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 16),
+              Text("Library", style: AppTextStyles.heading),
+              SizedBox(height: 50),
+          
+              content,
+            ],
+          ),
+        ),
       ),
     );
   }

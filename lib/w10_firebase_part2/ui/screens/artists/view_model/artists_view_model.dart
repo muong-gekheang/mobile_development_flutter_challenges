@@ -16,7 +16,12 @@ class ArtistsViewModel extends ChangeNotifier {
     fetchArtists();
   }
 
-  void fetchArtists() async {
+  Future<void> onRefresh() async {
+    print("Refreshing Artists");
+    fetchArtists(forceFetch: true);
+  }
+
+  void fetchArtists({bool forceFetch = false}) async {
     // 1- Loading state
     artistsValue = AsyncValue.loading();
     notifyListeners();
